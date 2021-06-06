@@ -1,0 +1,66 @@
+<% function convert(d){ 
+    var str= d.toString(); 
+    var date = new Date(str), 
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2), 
+      day = ("0" + date.getDate()).slice(-2); 
+      return [date.getFullYear(), mnth, day].join("-"); 
+  } %>
+<link rel="stylesheet" href="/css/job_description.css">
+
+<title><%= job.position %> at <%= job.recruiter.companyname %></title>
+
+<h1 style="margin-bottom:0px;">Job Description</h1>
+<span style="margin-left:20px; display: inline-block; width:870px;">
+    <p style="font-size:25px; font-weight: bold;"><%= job.recruiter.companyname %></p>
+    <p style="font-size:20px; font-weight: bold;margin-top:-10px;"><%= job.position %></p>
+    <p style="white-space: pre-wrap; margin-left:10px;"><%= job.content %></p>
+    <div id="job-description-content" style="display: flex; justify-content: space-around; margin-left:-20px; width: 900px;">
+        <p>Start Date: <%= convert(job.startDate) %></p>
+        <p>Apply by: <%= convert(job.applyBy) %></p>
+        <p>Location: <%= job.location %></p>
+        <p>CTC: INR <%= job.CTC %></p>
+    </div>
+    
+    <!-- <a href="appl"> -->
+        <% if( locals.candidate ){ %>
+            <form action="/recruiter/jobpost/apply/?id1=<%= locals.candidate.id %>&id=<%= job.id %>" method="POST">
+                <button id="apply-button" style="cursor: pointer; border-radius: 20px; border: 1px solid blue; height: 30px; width:120px; background-color: white; font-size:14px;">Apply</button>
+            </form>
+        
+        <% } %>
+        
+    </a>
+</span>
+<% if(job.comments.length==0){ %>
+    <span class="comments-container" style="border: 1px solid black; height: 400px;">
+<% }else{ %>
+    <span class="comments-container">
+<% } %>
+    <form action="/recruiter/jobpost/comment/createComment" method="POST">
+        <input id="comment-input" style="height: 40px;" type="text" placeholder="Add a comment..." name="content">
+        <% if(locals.candidate){ %>
+            <input type="hidden" name="candidate" value="<%= locals.candidate._id %>">
+        <% }else if(locals.recruiter){ %>
+            <input type="hidden" name="recruiter" value="<%= locals.recruiter._id %>">
+        <% } %>
+        <input type="hidden" name="product" value="<%= job._id %>">
+        <input style="height: 40px; width:80px;" type="submit" value="Comment">
+    </form>
+    <h3>Job Comments</h3>
+            <% for(i of job.comments){ %>
+                <div id="comments-list" style="margin-top:20px; overflow-y: auto;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <% if(i.recruiter){ %>
+                            <span style="font-size: 14px;"><%= i.recruiter.name %></span>
+                        <% } else { %>
+                            <span style="font-size: 14px;"><%= i.candidate.name %></span>
+                        <% } %>
+                        <a style="color: black;" href="/recruiter/jobpost/comment/deleteComment/?id=<%= i._id %>" >X</a>
+                    </div>
+                    <div id="comment-content"><%= i.content %></div>
+                </div>
+
+            <% } %>
+
+</span>
+

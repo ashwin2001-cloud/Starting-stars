@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/css/header.css">
+<section id="header-section">
+    <div id="app-name">
+        <a href="/"><h2>Starting Stars</h2></a>
+    </div>   
+        <% if(locals.candidate){ %>
+    <div id="sign-links">         
+           
+            <div id="candidate-profile-btn">
+                <a href="/candidate/profile/<%= locals.candidate._id %>"><button><%= candidate.name %></button></a>
+            </div>
+            <div id="sign-out-btn">
+                <a href="/candidate/sign-out"><button>Signout</button></a>
+            </div>
+            
+        <% }else if(locals.recruiter){ %>
+    <div id="sign-links">        
+            <div id="recruiter-profile-btn">
+                <a href="/recruiter/profile"><button><%= recruiter.name %></button></a>
+            </div>
+            <div id="sign-out-btn">
+                <a href="/recruiter/sign-out"><button>Signout</button></a>
+            </div>
+        
+        <% }else{ %>
+    <div id="sign-links" style="margin-right: 240px;">
+            <div id="sign-up-btn">
+                <a href="/candidate/sign-up"> <button>Candidate Sign up</button> </a>
+            </div>
+            <div id="sign-in-btn">
+                <a href="/candidate/sign-in"><button>Candidate Sign in</button></a>
+            </div>
+            <div id="sign-up-btn">
+                <a href="/recruiter/sign-up"> <button>Recruiter Sign up</button> </a>
+            </div>
+            <div id="sign-in-btn">
+                <a href="/recruiter/sign-in"><button>Recruiter Sign in</button></a>
+            </div>
+        <% } %>
+
+    </div>
+    
+
+</section>

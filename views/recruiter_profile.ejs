@@ -1,0 +1,76 @@
+<title><%= recruiter.name %></title>
+<link rel="stylesheet" href="/css/recruiter_profile.css">
+<section id="company-container">
+    <section id="recruiter-info">
+        <h1>Recruiter  Profile</h1>
+        <h2>Company Name: <%= recruiter.companyname %><h2>
+        <h3>Recruiter Name : <%= recruiter.name%></h3>
+        <h3>Recruiter Email : <%= recruiter.email%></h3>
+    </section>
+    
+<section id="job-section">
+    <section id="job-post-section">
+        <h1>Post a Job</h1>
+        <form action="jobpost/create/<%= locals.recruiter._id %>" method="POST">
+            <div>
+                <label for="jobposition">Job position</label>
+                <input type="text" id="jobposition" name="jobposition">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="content" id="description" cols="50" rows="10"></textarea>
+            </div>
+            <div>
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location">
+            </div>
+            <div>
+                <label for="startdate">Start Date</label>
+                <input type="date" id="startdate" name="startdate">
+            </div>
+            <div>
+                <label for="applyby">Apply By</label>
+                <input type="date" id="applyby" name="applyby">
+            </div>
+            <div>
+                <label for="CTC">CTC</label>
+                <input type="number" id="CTC" name="CTC">
+            </div>
+        
+            <input type="submit" value="Post" >
+            
+        </form>
+    </section>
+    <section id="job-list">
+        <div id="our-company-jobs">
+            <h1>Available Jobs at <%= recruiter.companyname %></h1>
+            <ul>
+                <%  for(var i of jobs ){ %>
+                    <% if( locals.recruiter.id ==  i.recruiter.id  ){ %>
+                        <li style="margin-bottom:60px;">
+                            <a href="jobpost/description/<%= i._id %>">
+                                <h4><%= i.position %></h4>
+                            </a>
+                            <p style="white-space: pre-wrap;"><%= i.content %></p>
+                            <div>
+                                <h5>Candidates applied to above job</h5>
+                                <% for(var can of i.candidate){ %>
+                                    <li>
+                                        <a href="/candidate/profile/<%= can._id %>">
+                                            <p><%= can.name %></p>
+                                        </a>
+                                    </li>
+                                    
+                                <% } %>
+                            </div>
+                        </li>
+                    <% } %>
+                <% } %>
+        </ul>
+        </div>
+    </section>
+</section>
+
+
+</section>
+

@@ -1,0 +1,48 @@
+body {
+  font-family: sans-serif; }
+  body #home-page #job-list {
+    width: 70%; }
+    body #home-page #job-list #job-container #job-post-list {
+      font-family: sans-serif;
+      list-style-type: none; }
+      body #home-page #job-list #job-container #job-post-list #job-post {
+        border: 1px solid #e4e7f0;
+        background-color: transparent;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 20px;
+        width: 900px;
+        height: 140px; }
+        body #home-page #job-list #job-container #job-post-list #job-post span div {
+          margin-left: 30px;
+          margin-top: 10px; }
+          body #home-page #job-list #job-container #job-post-list #job-post span div p {
+            border: 1px solid black;
+            padding-top: 4px;
+            border-radius: 24px;
+            font-size: 12px;
+            width: 140px;
+            text-align: center;
+            margin-left: 30px;
+            height: 20px; }
+        body #home-page #job-list #job-container #job-post-list #job-post #delete-button-container {
+          padding-top: 10px;
+          height: 100%;
+          width: 40px; }
+          body #home-page #job-list #job-container #job-post-list #job-post #delete-button-container a {
+            font-size: 20px; }
+        body #home-page #job-list #job-container #job-post-list #job-post a #position {
+          margin-left: 0.5rem;
+          text-decoration: none;
+          font-weight: bold; }
+        body #home-page #job-list #job-container #job-post-list #job-post a #view-details {
+          font-size: 0.7rem;
+          margin-left: 0.5rem;
+          margin-top: -10px; }
+        body #home-page #job-list #job-container #job-post-list #job-post #content {
+          margin-left: 0.5rem; }
+        body #home-page #job-list #job-container #job-post-list #job-post #company {
+          margin-top: -0.8rem;
+          margin-left: 0.5rem; }

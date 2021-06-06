@@ -1,0 +1,40 @@
+#sign-in-page {
+  margin-top: 70px; }
+  #sign-in-page h2 {
+    font-family: arial;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 40px; }
+  #sign-in-page form {
+    background-color: white;
+    height: 20rem;
+    width: 18rem;
+    border-radius: 3%;
+    margin: auto; }
+    #sign-in-page form h2 {
+      font-family: arial;
+      font-weight: bold;
+      margin: auto; }
+    #sign-in-page form input {
+      display: inline-block;
+      margin-top: 0.5rem;
+      width: 15rem;
+      padding: 0.8rem;
+      font-size: 0.7rem;
+      font-family: sans-serif;
+      outline-color: black; }
+    #sign-in-page form input[type="submit"] {
+      background-color: #355beb;
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 3%; }
+    #sign-in-page form #already-account {
+      height: 2rem;
+      width: 15rem;
+      margin-left: 1rem; }
+      #sign-in-page form #already-account a {
+        text-decoration: none;
+        color: #355beb; }

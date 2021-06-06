@@ -1,0 +1,15 @@
+<title>Recruiter Signin</title>
+<link rel="stylesheet" href="/css/sign_in.css">
+<div id="sign-in-page" >
+    <h2>Recruiter Sign in</h2>
+    <form action="/recruiter/create-session" method="POST">
+        <input name="email" type="email" required>
+        <input name="password" type="password" required>
+        <input type="submit" value="Sign in">
+
+        <p id="already-account">
+            <span>Don't have an account?</span> 
+            <a href="/recruiter/sign-up">Sign Up</a>
+        <p>
+    </form>
+</div>

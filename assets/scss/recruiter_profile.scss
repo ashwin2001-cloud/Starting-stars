@@ -1,0 +1,52 @@
+body{
+    #company-container{
+        #recruiter-info{
+
+        }
+    }
+    #job-section{
+        #job-post-section{
+            h1{
+
+            }
+            div{
+                display:flex;
+                flex-direction: space-between;
+                margin-top:0.5rem;
+                label{
+                    width:10vw;
+                }
+                input{
+                    display: inline-block;
+                    // margin-top: 0.5rem;
+                    // border-radius:3%;
+                    width: 50vw;
+                    padding: 0.3rem;
+                    font-size: 0.7rem;
+                    // outline: blueviolet;
+                    font-family: sans-serif;
+                    outline-color:black;
+                }
+                
+            }
+            input[type="submit"]{
+                display: inline-block;
+                margin-left:10vw;
+                    // border-radius:3%;
+                    width: 20vw;
+                    padding: 0.3rem;
+                    font-size: 0.7rem;
+                    // outline: blueviolet;
+                    font-family: sans-serif;
+                   margin-top:0.5rem;
+                background-color:#345beb;
+                color:white;
+                font-size:1rem;
+                outline: none;
+                cursor: pointer;
+                border:none;
+            }
+        }
+    }
+
+}

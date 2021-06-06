@@ -1,0 +1,46 @@
+<% function convert(d){ 
+        var str= d.toString(); 
+        var date = new Date(str), 
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2), 
+        day = ("0" + date.getDate()).slice(-2); 
+        return [date.getFullYear(), mnth, day].join("-"); 
+} %>
+<title>Home Page- Starting Stars</title>
+<link rel="stylesheet" href="/css/home_page.css">
+<Section id="home-page">
+                <!-- <section> -->
+        <section id="job-list">
+                <h1>Available Jobs</h1>
+                <div id="job-container">
+                <ul id="job-post-list">
+                <%  for(var i of jobs ){ %>
+                        <li id="job-post">
+                                <span style="padding-bottom:0px;">
+                                        <a href="recruiter/jobpost/description/<%= i._id %>">
+                                                <p id="position"><%= i.position %></p>
+                                        </a>
+                                        <p id="company"><%= i.recruiter.companyname %></p>
+                                        <div style="display: flex; width: 800px; ">
+                                                <p>Start Date: <%= convert(i.startDate) %></p>
+                                                <p>Apply by: <%= convert(i.applyBy) %></p>
+                                                <p>Location: <%= i.location %></p>
+                                                <p>CTC: INR <%= i.CTC %></p>
+                                        </div>
+                                        <!-- <p id="content" style="white-space: pre-wrap; overflow: hidden; height:100px; line-height:20px;"><%= i.content %></p> -->
+                                        <a style="margin-top:20px;" href="recruiter/jobpost/description/<%= i._id %>">
+                                                <p style="margin-top:0px;" id="view-details">View Details ></p>
+                                        </a>
+                                </span>
+                                <span id="delete-button-container">
+                                        <a style="color: black;" href="/recruiter/jobpost/delete/?id=<%= i._id %>" >X</a>
+                                </span>
+                        </li>
+                <% } %>
+                </ul>
+                </div>
+
+        </section>
+</Section>
+   
+
+

@@ -1,0 +1,17 @@
+<title>Candidate Signin</title>
+<link rel="stylesheet" href="/css/sign_in.css">
+<div id="sign-in-page" >
+    <h2>Candidate Sign in</h2>
+    <form action="/candidate/create-session" method="POST">
+        <input name="email" type="email" required>
+        <input name="password" type="password" required>
+        <input type="submit" value="Sign in">
+
+        <p id="already-account">
+            <span>Don't have an account?</span> 
+            <a href="/candidate/sign-up">Sign Up</a>
+        <p>
+
+
+    </form>
+</div>

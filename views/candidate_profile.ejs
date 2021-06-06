@@ -1,0 +1,13 @@
+<h1>Candidate Profile</h1>
+<% if(locals.candidate){ %>
+    
+    <title><%= candidate.name %></title>
+    <h3>Name : <%= candidate.name%></h3>
+    <h3>Email : <%= candidate.email%></h3>
+    <h3>Phone : <%= candidate.phone%></h3>
+<% }else{ %>
+    <title><%= profile_candidate.name %></title>
+    <h3> Name : <%= profile_candidate.name%></h3>
+    <h3> Email : <%= profile_candidate.email%></h3>
+    <h3> Phone No: +<%= profile_candidate.phone%></h3>
+<% } %>

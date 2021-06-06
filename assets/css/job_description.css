@@ -1,0 +1,34 @@
+#job-description-content p {
+  border: 1px solid #caccd4;
+  padding: 10px;
+  width: 180px;
+  border-radius: 20px; }
+
+.comments-container {
+  display: inline-block;
+  width: 370px;
+  vertical-align: top;
+  margin-left: 32px;
+  margin-top: -30px;
+  height: auto;
+  margin-bottom: 50px; }
+  .comments-container #comments-list #comment-content {
+    font-size: 15px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 20px; }
+  .comments-container form #comment-input {
+    width: 280px; }
+
+@media screen and (max-width: 1324px) {
+  .comments-container {
+    display: block;
+    width: 900px;
+    border-top: 1px solid black;
+    padding-top: 30px;
+    margin-top: 20px; }
+    .comments-container #comments-list {
+      width: 900px; }
+      .comments-container #comments-list #comment-content {
+        padding-bottom: 10px; }
+    .comments-container form #comment-input {
+      width: 800px; } }
