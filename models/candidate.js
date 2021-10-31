@@ -17,6 +17,10 @@ const candidateSchema=new mongoose.Schema({
     phone:{
         type:Number,
         unique:true
+    },
+    linkedin: {
+        type: String,
+        unique: true
     }
 },{
     //to add a feature of 'created at' and 'updated at'.

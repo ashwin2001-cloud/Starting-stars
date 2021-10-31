@@ -72,3 +72,17 @@ module.exports.destroySession= async (req,res)=>{
         return;
     }
 }
+
+module.exports.addResume= async (req, res)=>{
+    try{
+        let candidate= await Candidate.findById(req.body.id);
+        if(candidate){
+            candidate.linkedin= req.body.linkedin;
+            candidate.save();
+        }
+        return res.redirect('back');
+    }catch(err){
+        console.log(err);
+        return;
+    }
+}

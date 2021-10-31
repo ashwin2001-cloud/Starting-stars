@@ -1,13 +1,24 @@
-<h1>Candidate Profile</h1>
 <% if(locals.candidate){ %>
-    
+    <h1>Candidate Information</h1>
     <title><%= candidate.name %></title>
     <h3>Name : <%= candidate.name%></h3>
     <h3>Email : <%= candidate.email%></h3>
-    <h3>Phone : <%= candidate.phone%></h3>
+    <h3>Phone : +91 <%= candidate.phone%></h3>
+    <% if(candidate.linkedin){ %>
+        <h3>Linkedin: <a href="<%= candidate.linkedin %>" target="_blank" style="color: blue; font-style: italic;"><%= candidate.linkedin %> </a></h3>
+    <% } %>
+    <form action="/candidate/addResume" method="POST">
+        <input name="linkedin" type="text" placeholder="Enter linkedin URL" required>
+        <input type="hidden" name="id" value="<%= candidate.id %>">
+        <input type="submit" value="Save">
+    </form>
 <% }else{ %>
+    <h1>Candidate Information</h1>
     <title><%= profile_candidate.name %></title>
     <h3> Name : <%= profile_candidate.name%></h3>
     <h3> Email : <%= profile_candidate.email%></h3>
-    <h3> Phone No: +<%= profile_candidate.phone%></h3>
+    <h3> Phone No: +91 <%= profile_candidate.phone%></h3>
+    <% if(profile_candidate.linkedin){ %>
+        <h3>Linkedin: <a href="<%= profile_candidate.linkedin %>" target="_blank" style="color: blue; font-style: italic;"><%= profile_candidate.linkedin %> </a></h3>
+    <% } %>
 <% } %>

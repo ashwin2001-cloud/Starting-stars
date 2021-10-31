@@ -19,6 +19,12 @@
   .comments-container form #comment-input {
     width: 280px; }
 
+#apply-button {
+  height: 30px;
+  width: 150px;
+  font-size: 14px;
+  cursor: pointer; }
+
 @media screen and (max-width: 1324px) {
   .comments-container {
     display: block;

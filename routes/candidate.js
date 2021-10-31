@@ -17,5 +17,6 @@ router.post('/create-session',passport.authenticate(
 ) ,candidateController.createSession);
 router.get('/profile/:id',passport.checkAuthentication,candidateController.profile);
 router.get('/sign-out',candidateController.destroySession);
+router.post('/addResume', passport.checkAuthentication, candidateController.addResume);
 console.log('candidate router is working....');
 module.exports=router;

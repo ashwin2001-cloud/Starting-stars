@@ -24,7 +24,17 @@
     <!-- <a href="appl"> -->
         <% if( locals.candidate ){ %>
             <form action="/recruiter/jobpost/apply/?id1=<%= locals.candidate.id %>&id=<%= job.id %>" method="POST">
-                <button id="apply-button" style="cursor: pointer; border-radius: 20px; border: 1px solid blue; height: 30px; width:120px; background-color: white; font-size:14px;">Apply</button>
+                <% var a=0; %>
+                <% for(i of job.candidate){ 
+                    if(i == locals.candidate.id){
+                        a=1;
+                    }
+                } %>
+                <% if(a){ %>
+                    <i style="font-size:20px;">Thanks for applying! Recruiter will contact you soon...</i>
+                <% }else{ %>
+                    <button id="apply-button">Apply</button>
+                <% } %>
             </form>
         
         <% } %>
