@@ -18,6 +18,7 @@ const candidatepassportLocal=require('./config/candidate-passport-local-strategy
 const sassMiddleware=require('node-sass-middleware');
 
 const env= require('./config/environment');
+console.log(env);
 const path= require('path');
 
 //telling app to use it
