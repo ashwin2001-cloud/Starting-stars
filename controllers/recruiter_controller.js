@@ -1,71 +1,79 @@
 const Recruiter=require('../models/recruiter');
 const Job=require('../models/job');
 
-module.exports.profile = function(req, res){
-    Job.find({})
-    .populate('recruiter')
-    //populated candidate of job also
-    .populate({
-        path:'candidate'
-    })
-    .exec(function(err,jobs){
-        if(err){
-            console.log('error in finding company jobs', err);
-            return;
-        }
+module.exports.profile = async (req, res)=>{
+    try{
+        let jobs= await Job.find({})
+        .populate('recruiter')
+        //populated candidate of job also
+        .populate({
+            path:'candidate'
+        });
 
         return res.render('recruiter_profile',{
             jobs:jobs
         });
-    });
-    // return res.render('recruiter_profile');
-}
-module.exports.signUp=function(req,res){
-    if(req.isAuthenticated()){
-        return res.redirect('/recruiter/profile');
+    }catch(err){
+        console.log(err);
+        return;
     }
-    return res.render('recruiter_signup');
 }
-module.exports.signIn=function(req,res){
-    if(req.isAuthenticated()){
-        return res.redirect('/recruiter/profile');
-    }
-    return res.render('recruiter_signin');
-}
-module.exports.create=function(req,res){
-    if(req.body.password!=req.body.confirm_password){
-        return res.redirect('back');
-    }
-    Recruiter.findOne({email:req.body.email},function(err,recruiter){
-        if(err){
-            console.log('error in finding recruiter in signing up');
-            return;
+
+module.exports.signUp= async (req,res)=>{
+    try{
+        if(req.isAuthenticated()){
+            return res.redirect('/recruiter/profile');
         }
-        if(!recruiter){
-            Recruiter.create(req.body,function(err,recruiter){
-                if(err){
-                    console.log('error in creating recruiter while sign-up...!!!!!!!!');
-                    return;
-                }
-                return res.redirect('/recruiter/sign-in');
-            });
+        return res.render('recruiter_signup');
+    }catch(err){
+        console.log(err);
+        return;
+    }
+}
+
+module.exports.signIn= async (req,res)=>{
+    try{
+        if(req.isAuthenticated()){
+            return res.redirect('/recruiter/profile');
         }
-        else{
+        return res.render('recruiter_signin');
+    }catch(err){
+        console.log(err);
+        return;
+    }
+}
+
+module.exports.create= async (req,res)=>{
+    try{
+        if(req.body.password!=req.body.confirm_password){
             return res.redirect('back');
         }
-    })
+        let recruiter= await Recruiter.findOne({email:req.body.email});
+        if(!recruiter){
+            let newRecruiter= await Recruiter.create(req.body);
+            return res.redirect('/recruiter/sign-in');
+        }
+        else return res.redirect('back');
+    }catch(err){
+        console.log(err);
+        return;
+    }
 }
-//signin
-module.exports.createSession=function(req, res){
+
+module.exports.createSession= async (req, res)=>{
     return res.redirect('/');
 } 
-//signout
-module.exports.destroySession=function(req,res){
+
+module.exports.destroySession= async (req,res)=>{
     /*Passport exposes a logout() function on req that can be called from any 
     route handler which needs to terminate a login session.
     Invoking logout() will remove the req.user property and clear the login session 
     */ 
-    req.logout();
-    //then redirecting to home page.
-    return res.redirect('/');
+    try{
+        req.logout();
+        return res.redirect('/');
+    }catch(err){
+        console.log(err);
+        return;
+    }
 } 

@@ -1,17 +1,14 @@
 const Job=require('../models/job');
-module.exports.home=function(req,res){
-    Job.find({}).populate('recruiter').exec(function(err,jobs){
-        if(err){
-            console.log('error in finding all jobs',err);
-            return;
-        }
+
+module.exports.home= async (req,res)=>{
+    try{
+        let jobs= await Job.find({}).populate('recruiter');
         return res.render('home_page',{
             jobs:jobs
         });
-    });
+    }catch(err){
+        console.log(err);
+        return;
+    }
     
-    
-    
-
-    // return res.render('home_page');
 }

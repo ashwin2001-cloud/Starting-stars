@@ -1,5 +1,5 @@
 const express =require('express');
-const port=process.env.PORT || 8000;
+const port=process.env.PORT || 3000;
 
 const app=express();
 const cookieParser=require('cookie-parser');
